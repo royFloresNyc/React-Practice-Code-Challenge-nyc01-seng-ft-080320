@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import AddMoney from '../components/AddMoney'
 
 const Table = (props) => {
 
@@ -18,6 +19,13 @@ const Table = (props) => {
           {renderPlates(props.eatenSushi)}
         </div>
       </div>
+      <div className="money-form">
+            <AddMoney moneyFormVal={props.moneyFormVal} 
+                formChangeHandler={props.formChangeHandler}
+                addMoney={props.addMoney}
+            /> 
+      </div>
+      
     </Fragment>
   )
 }

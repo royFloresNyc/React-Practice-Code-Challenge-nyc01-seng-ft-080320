@@ -11,7 +11,8 @@ class App extends Component {
         eatenSushi: [],
         head: 0,
         tail: 3,
-        money: 100
+        money: 100,
+        moneyFormVal: 0
     }
 
     componentDidMount() {
@@ -40,13 +41,30 @@ class App extends Component {
             }
         })
     }
+
+    formChangeHandler = (value) => {
+        this.setState({moneyFormVal: parseInt(value)})
+    }
+
+    addMoney = () => {
+        this.setState(prevState => {
+            return {
+                money: prevState.money + prevState.moneyFormVal,
+                moneyFormVal: 0
+            }
+        })
+    }
   
     render() {
-        console.log('Eaten Sushi: ', this.state.eatenSushi)
         return (
         <div className="app">
             <SushiContainer currentSushi={this.sendOutSushi()} moreSushi={this.moreSushi} eatSushi={this.eatSushi}/>
-            <Table eatenSushi={this.state.eatenSushi} money={this.state.money}/>
+            <Table eatenSushi={this.state.eatenSushi} 
+                money={this.state.money} 
+                moneyFormVal={this.state.moneyFormVal} 
+                formChangeHandler={this.formChangeHandler}
+                addMoney={this.addMoney}
+            />
         </div>
         );
     }
