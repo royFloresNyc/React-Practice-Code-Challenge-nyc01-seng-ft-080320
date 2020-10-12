@@ -14,7 +14,7 @@ const AddMoney = (props) => {
         <form onSubmit={submitHandler}>
             <label>Add Money to Wallet:</label> <br/>
             <input type="number" 
-                placholder="0" 
+                placeholder={0}
                 value={props.moneyFormVal} 
                 onChange={localChangeHandler}>
             </input>

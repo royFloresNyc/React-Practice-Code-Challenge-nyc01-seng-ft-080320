@@ -12,7 +12,7 @@ class App extends Component {
         head: 0,
         tail: 3,
         money: 100,
-        moneyFormVal: 0
+        moneyFormVal: ''
     }
 
     componentDidMount() {
@@ -43,14 +43,14 @@ class App extends Component {
     }
 
     formChangeHandler = (value) => {
-        this.setState({moneyFormVal: parseInt(value)})
+        this.setState({moneyFormVal: Number(value)})
     }
 
     addMoney = () => {
         this.setState(prevState => {
             return {
                 money: prevState.money + prevState.moneyFormVal,
-                moneyFormVal: 0
+                moneyFormVal: ''
             }
         })
     }
