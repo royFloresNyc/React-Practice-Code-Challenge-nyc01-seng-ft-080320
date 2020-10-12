@@ -11,6 +11,7 @@ class App extends Component {
         eatenSushi: [],
         head: 0,
         tail: 3,
+        money: 100
     }
 
     componentDidMount() {
@@ -34,6 +35,7 @@ class App extends Component {
     eatSushi = (sushiObj) => {
         this.setState(prevState => {
             return {
+                money: prevState.money - sushiObj.price, 
                 eatenSushi: [...prevState.eatenSushi, sushiObj]
             }
         })
@@ -44,7 +46,7 @@ class App extends Component {
         return (
         <div className="app">
             <SushiContainer currentSushi={this.sendOutSushi()} moreSushi={this.moreSushi} eatSushi={this.eatSushi}/>
-            <Table eatenSushi={this.state.eatenSushi}/>
+            <Table eatenSushi={this.state.eatenSushi} money={this.state.money}/>
         </div>
         );
     }
